@@ -1,33 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CityListContainer from './cityListContainer';
+import { getWeatherFor } from '../actions/weatherActions';
 
 class IndexContainer extends Component {
   componentDidMount() {
-    this.props.cities.map(city => this.props.dispatchGetWeather(city));
+    console.log('cities: ', this.props.cities);
+    this.props.cities.map(city => this.props.dispatchGetWeatherFor(city));
   }
-
-  //TODO: Maybe re-executes get request evey 5 minutes to keep data up to date??
 
   render() {
     return (
       <div>
         <h2>INDEX CONTAINER</h2>
-        {this.props.cities.map((city, i) => <CityListContainer key={i} />)}
+        {this.props.weatherObjs
+          ? this.props.weatherObjs.map(cityObj => <CityListContainer key={cityObj.id} />)
+          : null}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { cities: state.cities };
+  return {
+    cities: state.cities,
+    weatherObjs: state.weatherObjs
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchGetWeather: () => {
-      dispatch(getWeather());
-    }
+    dispatchGetWeatherFor: city_name => dispatch(getWeatherFor(city_name))
   };
 };
 

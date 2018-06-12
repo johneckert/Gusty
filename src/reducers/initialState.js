@@ -1,4 +1,8 @@
-export default {
-  //Setting this array dynamically would allow this app to show any cities
-  cities: ['Copenhagen', 'Tokyo', 'Delhi', 'New York', 'Istanbul']
+const initialState = {
+  cities: ['Copenhagen', 'Tokyo', 'Delhi', 'New York', 'Istanbul'], //making this dynamic would allow to show any cities
+  weatherObjs: [],
+  forecastObj: {},
+  units: 'f'
 };
+
+export default initialState;
