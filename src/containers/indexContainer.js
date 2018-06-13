@@ -11,7 +11,9 @@ class IndexContainer extends Component {
   render() {
     return this.props.weatherObjs.length > 0 ? (
       <div>
-        {this.props.weatherObjs.map(weatherObj => <CityListContainer key={weatherObj.id} />)}
+        {this.props.weatherObjs.map(weatherObj => (
+          <CityListContainer key={weatherObj.id} weatherObj={weatherObj} />
+        ))}
       </div>
     ) : (
       <div>LOADING...</div>

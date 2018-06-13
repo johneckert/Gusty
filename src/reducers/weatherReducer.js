@@ -1,5 +1,10 @@
 import initialState from './initialState';
-import { GET_WEATHER_FAIL, GET_WEATHER_SUCCESS, GET_WEATHER_OBJECTS } from '../actions/actionTypes';
+import {
+  GET_WEATHER_FAIL,
+  GET_WEATHER_SUCCESS,
+  GET_WEATHER_OBJECTS,
+  FIND_RELEVANT_WEATHER_OBJECT
+} from '../actions/actionTypes';
 
 const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -9,6 +14,8 @@ const weatherReducer = (state = initialState, action) => {
       return { ...state, error: 'Weather Data Unavailable' };
     case GET_WEATHER_OBJECTS:
       return { ...state, weatherObjs: state.weatherObjs };
+    case FIND_RELEVANT_WEATHER_OBJECT:
+      return { ...state, relevantWeatherObj: action.payload };
     default:
       return state;
   }
