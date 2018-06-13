@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectCity } from '../actions/weatherActions';
+import { setCurrentCity } from '../actions/weatherActions';
 
 class CityListContainer extends Component {
-  handleClick = event => {
-    this.props.dispatchSelectCity(this.props.weatherObj);
+  formatURL = weatherObj => {
+    const url = weatherObj.name
+      .split(' ')
+      .join('-')
+      .toLowerCase();
+    return url;
   };
 
   render() {
     return (
-      <div onClick={this.handleClick}>
+      <a href={'/' + this.formatURL(this.props.weatherObj)}>
         <h3>{this.props.weatherObj.name}</h3>
         <ul>
           <li>Temp: {this.props.weatherObj.temp}</li>
@@ -18,19 +22,23 @@ class CityListContainer extends Component {
           <li>Pressure: {this.props.weatherObj.pressure}</li>
           <li>Humidity: {this.props.weatherObj.humidity}</li>
         </ul>
-      </div>
+      </a>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return { currentCity: state.currentCity };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchSelectCity: weatherObj => dispatch(selectCity(weatherObj))
+    dispatchSetCurrentCity: currentCity => dispatch(setCurrentCity(currentCity))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(CityListContainer);
 

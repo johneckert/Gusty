@@ -3,12 +3,20 @@ import { connect } from 'react-redux';
 import CurrentWeather from '../components/currentWeather';
 import Forecast from '../components/forecast';
 import Details from '../components/details';
+import { setCurrentCity } from '../actions/weatherActions';
 
 class CityDetailContainer extends Component {
+  componentDidMount() {
+    const currentCity = this.props.location.pathname
+      .split('/')[1]
+      .split('-')
+      .join(' ');
+    this.props.dispatchSetCurrentCity(currentCity);
+  }
   render() {
     return (
       <div>
-        <h2>CITY DETAIL CONTAINER</h2>
+        <h2>{this.props.currentCity.toUpperCase()}</h2>
         <CurrentWeather />
         <Forecast />
         <Details />
@@ -18,7 +26,14 @@ class CityDetailContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  return state;
+  return { currentCity: state.currentCity };
 };
 
-export default connect(mapStateToProps)(CityDetailContainer);
+const mapDispatchToProps = dispatch => {
+  return { dispatchSetCurrentCity: cityName => dispatch(setCurrentCity(cityName)) };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CityDetailContainer);

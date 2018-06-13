@@ -2,9 +2,13 @@ import {
   GET_WEATHER_OBJECTS,
   GET_WEATHER_SUCCESS,
   GET_WEATHER_FAIL,
-  FIND_RELEVANT_WEATHER_OBJECT
+  GET_FORECAST_SUCCESS,
+  GET_FORECAST_FAIL,
+  FIND_RELEVANT_WEATHER_OBJECT,
+  SET_CURRENT_CITY
 } from './actionTypes';
 import WeatherData from '../services/weatherDataAPI';
+import ForecastData from '../services/forecastDataAPI';
 
 export const getWeatherFor = cityName => {
   return function(dispatch) {
@@ -30,6 +34,24 @@ export const getWeatherFor = cityName => {
   };
 };
 
-export const selectCity = relevantObj => {
-  return { type: FIND_RELEVANT_WEATHER_OBJECT, payload: relevantObj };
+export const setCurrentCity = currentCity => {
+  return { type: SET_CURRENT_CITY, payload: currentCity };
 };
+
+export const getForecastFor = cityName => {
+  return function(dispatch) {
+    ForecastData.getForecast(cityName).then(json => {
+      if (json.cod === 200) {
+        //build forecast data
+        const cityForecastData = json;
+        dispatch({ type: GET_FORECAST_SUCCESS, payload: cityForecastData });
+      } else {
+        dispatch({ type: GET_FORECAST_FAIL });
+      }
+    });
+  };
+};
+//
+// export const selectCity = relevantObj => {
+//   return { type: FIND_RELEVANT_WEATHER_OBJECT, payload: relevantObj };
+// };
