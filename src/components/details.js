@@ -7,8 +7,6 @@ const Details = props => {
       <h3>Details</h3>
       <ul>
         <li>Temp: {props.weatherObj.temp}</li>
-        <li>Low: {props.weatherObj.temp_min}</li>
-        <li>High: {props.weatherObj.temp_max}</li>
         <li>Pressure: {props.weatherObj.pressure}</li>
         <li>Humidity: {props.weatherObj.humidity}</li>
       </ul>

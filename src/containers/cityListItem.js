@@ -17,8 +17,6 @@ class CityListItem extends Component {
         <h3>{this.props.weatherObj.name}</h3>
         <ul>
           <li>Temp: {this.props.weatherObj.temp}</li>
-          <li>Low: {this.props.weatherObj.temp_min}</li>
-          <li>High: {this.props.weatherObj.temp_max}</li>
           <li>Pressure: {this.props.weatherObj.pressure}</li>
           <li>Humidity: {this.props.weatherObj.humidity}</li>
         </ul>
