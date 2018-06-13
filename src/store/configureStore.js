@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from '../reducers/rootReducer';
+import weatherReducer from '../reducers/weatherReducer';
 import thunk from 'redux-thunk';
 
 const store = createStore(
-  rootReducer,
+  weatherReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
 );

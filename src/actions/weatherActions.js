@@ -1,9 +1,9 @@
-import { GET_WEATHER_SUCCESS, GET_WEATHER_FAIL } from './actionTypes';
+import { GET_WEATHER_OBJECTS, GET_WEATHER_SUCCESS, GET_WEATHER_FAIL } from './actionTypes';
 import WeatherData from '../services/weatherDataAPI';
 
-export const getWeatherFor = city_name => {
+export const getWeatherFor = cityName => {
   return function(dispatch) {
-    WeatherData.getWeather(city_name).then(json => {
+    WeatherData.getWeather(cityName).then(json => {
       if (json.cod === 200) {
         //build city data
         const cityData = {
@@ -17,9 +17,9 @@ export const getWeatherFor = city_name => {
           pressure: json.main.pressure,
           humidity: json.main.humidity
         };
-        return { type: GET_WEATHER_SUCCESS, payload: cityData };
+        dispatch({ type: GET_WEATHER_SUCCESS, payload: cityData });
       } else {
-        return { type: GET_WEATHER_FAIL };
+        dispatch({ type: GET_WEATHER_FAIL });
       }
     });
   };

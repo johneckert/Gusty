@@ -5,18 +5,16 @@ import { getWeatherFor } from '../actions/weatherActions';
 
 class IndexContainer extends Component {
   componentDidMount() {
-    console.log('cities: ', this.props.cities);
     this.props.cities.map(city => this.props.dispatchGetWeatherFor(city));
   }
 
   render() {
-    return (
+    return this.props.weatherObjs.length > 0 ? (
       <div>
-        <h2>INDEX CONTAINER</h2>
-        {this.props.weatherObjs
-          ? this.props.weatherObjs.map(cityObj => <CityListContainer key={cityObj.id} />)
-          : null}
+        {this.props.weatherObjs.map(weatherObj => <CityListContainer key={weatherObj.id} />)}
       </div>
+    ) : (
+      <div>LOADING...</div>
     );
   }
 }
@@ -30,7 +28,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchGetWeatherFor: city_name => dispatch(getWeatherFor(city_name))
+    dispatchGetWeatherFor: cityName => dispatch(getWeatherFor(cityName))
   };
 };
 
