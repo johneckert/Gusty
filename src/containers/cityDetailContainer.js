@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CurrentWeather from '../components/currentWeather';
 import Forecast from '../components/forecast';
 import Details from '../components/details';
-import { setCurrentCity } from '../actions/weatherActions';
+import { setCurrentCity, getSingleWeatherFor, getForecastFor } from '../actions/weatherActions';
 
 class CityDetailContainer extends Component {
   componentDidMount() {
@@ -12,6 +12,8 @@ class CityDetailContainer extends Component {
       .split('-')
       .join(' ');
     this.props.dispatchSetCurrentCity(currentCity);
+    this.props.dispatchGetSingleWeatherFor(currentCity);
+    this.props.dispatchGetForecastFor(currentCity);
   }
   render() {
     return (
@@ -30,7 +32,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { dispatchSetCurrentCity: cityName => dispatch(setCurrentCity(cityName)) };
+  return {
+    dispatchSetCurrentCity: cityName => dispatch(setCurrentCity(cityName)),
+    dispatchGetSingleWeatherFor: cityName => dispatch(getSingleWeatherFor(cityName)),
+    dispatchGetForecastFor: cityName => dispatch(getForecastFor(cityName))
+  };
 };
 
 export default connect(

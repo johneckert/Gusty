@@ -41,15 +41,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CityListItem);
-
-// const cityData = {
-//   id: json.id,
-//   name: json.name,
-//   time: json.dt,
-//   weather: json.weather,
-//   temp: json.main.temp,
-//   low: json.main.temp_min,
-//   high: json.main.temp_max,
-//   pressure: json.main.pressure,
-//   humidity: json.main.humidity
-// };

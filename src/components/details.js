@@ -1,7 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Details = () => {
-  return <h3>details</h3>;
+const Details = props => {
+  return (
+    <div>
+      <h3>Details</h3>
+      <ul>
+        <li>Temp: {props.weatherObj.temp}</li>
+        <li>Low: {props.weatherObj.temp_min}</li>
+        <li>High: {props.weatherObj.temp_max}</li>
+        <li>Pressure: {props.weatherObj.pressure}</li>
+        <li>Humidity: {props.weatherObj.humidity}</li>
+      </ul>
+    </div>
+  );
 };
 
-export default Details;
+const mapStateToProps = state => {
+  return { weatherObj: state.relevantWeatherObj };
+};
+
+export default connect(mapStateToProps)(Details);
