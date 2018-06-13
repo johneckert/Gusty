@@ -1,12 +1,17 @@
 import React from 'react';
-import ForecastData from '../services/forecastDataAPI';
+import { connect } from 'react-redux';
 
-const Forecast = () => {
+const Forecast = props => {
+  console.log('in forecastComponent', props.forecastObj);
   return (
     <div>
-      <h3>forecast</h3>
+      <h3>Forecast</h3>
     </div>
   );
 };
 
-export default Forecast;
+const mapStateToProps = state => {
+  return { forecastObj: state.forecastObj };
+};
+
+export default connect(mapStateToProps)(Forecast);

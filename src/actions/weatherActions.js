@@ -66,8 +66,8 @@ export const setCurrentCity = currentCity => {
 export const getForecastFor = cityName => {
   return function(dispatch) {
     ForecastData.getForecast(cityName).then(json => {
-      if (json.cod === 200) {
-        //build forecast data
+      if (json.cod === '200') {
+        console.log('getForecastAction', json);
         const cityForecastData = json;
         dispatch({ type: GET_FORECAST_SUCCESS, payload: cityForecastData });
       } else {
@@ -76,7 +76,3 @@ export const getForecastFor = cityName => {
     });
   };
 };
-//
-// export const selectCity = relevantObj => {
-//   return { type: FIND_RELEVANT_WEATHER_OBJECT, payload: relevantObj };
-// };
