@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setCurrentCity } from '../actions/weatherActions';
 
-class CityListContainer extends Component {
+class CityListItem extends Component {
   formatURL = weatherObj => {
     const url = weatherObj.name
       .split(' ')
@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CityListContainer);
+)(CityListItem);
 
 // const cityData = {
 //   id: json.id,
