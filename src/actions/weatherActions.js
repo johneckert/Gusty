@@ -1,4 +1,9 @@
-import { GET_WEATHER_OBJECTS, GET_WEATHER_SUCCESS, GET_WEATHER_FAIL } from './actionTypes';
+import {
+  GET_WEATHER_OBJECTS,
+  GET_WEATHER_SUCCESS,
+  GET_WEATHER_FAIL,
+  FIND_RELEVANT_WEATHER_OBJECT
+} from './actionTypes';
 import WeatherData from '../services/weatherDataAPI';
 
 export const getWeatherFor = cityName => {
@@ -23,4 +28,8 @@ export const getWeatherFor = cityName => {
       }
     });
   };
+};
+
+export const selectCity = relevantObj => {
+  return { type: FIND_RELEVANT_WEATHER_OBJECT, payload: relevantObj };
 };

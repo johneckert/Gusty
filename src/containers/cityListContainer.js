@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectCity } from '../actions/weatherActions';
 
 class CityListContainer extends Component {
+  handleClick = event => {
+    this.props.dispatchSelectCity(this.props.weatherObj);
+  };
+
   render() {
     return (
-      <div>
+      <div onClick={this.handleClick}>
         <h3>{this.props.weatherObj.name}</h3>
         <ul>
           <li>Temp: {this.props.weatherObj.temp}</li>
@@ -18,7 +23,16 @@ class CityListContainer extends Component {
   }
 }
 
-export default CityListContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchSelectCity: weatherObj => dispatch(selectCity(weatherObj))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CityListContainer);
 
 // const cityData = {
 //   id: json.id,
