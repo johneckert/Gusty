@@ -20,12 +20,11 @@ export const getWeatherFor = cityName => {
           id: json.id,
           name: json.name,
           time: json.dt,
-          weather: json.weather,
-          temp: json.main.temp,
-          low: json.main.temp_min,
-          high: json.main.temp_max,
-          pressure: json.main.pressure,
-          humidity: json.main.humidity
+          wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
+          icon: json.weather[0].icon,
+          temp: Math.round(json.main.temp),
+          pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
+          humidity: Math.round(json.main.humidity)
         };
         dispatch({ type: GET_WEATHER_SUCCESS, payload: cityData });
       } else {
@@ -44,10 +43,11 @@ export const getSingleWeatherFor = cityName => {
           id: json.id,
           name: json.name,
           time: json.dt,
-          weather: json.weather,
-          temp: json.main.temp,
-          pressure: json.main.pressure,
-          humidity: json.main.humidity
+          wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
+          icon: json.weather[0].icon,
+          temp: Math.round(json.main.temp),
+          pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
+          humidity: Math.round(json.main.humidity)
         };
         dispatch({ type: CURRENT_WEATHER_SUCCESS, payload: cityData });
       } else {
@@ -68,4 +68,43 @@ export const getForecastFor = cityName => {
       dispatch({ type: GET_FORECAST_SUCCESS, payload: json });
     });
   };
+};
+
+//Calculate Wind Direction from degrees
+const direction = w => {
+  if (w >= 349 || w < 11) {
+    return 'N';
+  } else if (w >= 11 && w < 34) {
+    return 'NNE';
+  } else if (w >= 34 && w < 56) {
+    return 'NE';
+  } else if (w >= 56 && w < 79) {
+    return 'ENE';
+  } else if (w >= 79 && w < 101) {
+    return 'E';
+  } else if (w >= 101 && w < 124) {
+    return 'ESE';
+  } else if (w >= 124 && w < 146) {
+    return 'SE';
+  } else if (w >= 146 && w < 169) {
+    return 'SSE';
+  } else if (w >= 169 && w < 191) {
+    return 'S';
+  } else if (w >= 191 && w < 214) {
+    return 'SSW';
+  } else if (w >= 214 && w < 236) {
+    return 'SW';
+  } else if (w >= 236 && w < 259) {
+    return 'WSW';
+  } else if (w >= 259 && w < 281) {
+    return 'W';
+  } else if (w >= 281 && w < 304) {
+    return 'WNW';
+  } else if (w >= 304 && w < 326) {
+    return 'NW';
+  } else if (w >= 326 && w < 349) {
+    return 'NNW';
+  } else {
+    return '--';
+  }
 };

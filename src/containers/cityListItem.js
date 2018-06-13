@@ -14,11 +14,10 @@ class CityListItem extends Component {
   render() {
     return (
       <a href={'/' + this.formatURL(this.props.weatherObj)}>
-        <h3>{this.props.weatherObj.name}</h3>
         <ul>
+          <li>Name: {this.props.weatherObj.name}</li>
           <li>Temp: {this.props.weatherObj.temp}</li>
-          <li>Pressure: {this.props.weatherObj.pressure}</li>
-          <li>Humidity: {this.props.weatherObj.humidity}</li>
+          <li>Icon: {this.props.weatherObj.icon}</li>
         </ul>
       </a>
     );

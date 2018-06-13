@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 const currentWeather = props => {
   return (
     <div>
-      <h3>Current Weather</h3>
       <ul>
+        <li>Name: {props.weatherObj.name}</li>
         <li>Temp: {props.weatherObj.temp}</li>
-        <li>Pressure: {props.weatherObj.pressure}</li>
-        <li>Humidity: {props.weatherObj.humidity}</li>
+        <li>Icon: {props.weatherObj.icon}</li>
       </ul>
     </div>
   );

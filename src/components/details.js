@@ -6,9 +6,10 @@ const Details = props => {
     <div>
       <h3>Details</h3>
       <ul>
-        <li>Temp: {props.weatherObj.temp}</li>
-        <li>Pressure: {props.weatherObj.pressure}</li>
-        <li>Humidity: {props.weatherObj.humidity}</li>
+        <li>Local Time: {props.weatherObj.time}</li>
+        <li>Wind: {props.weatherObj.wind} mph</li>
+        <li>Humidity: {props.weatherObj.humidity} %</li>
+        <li>Pressure: {props.weatherObj.pressure} mHg</li>
       </ul>
     </div>
   );

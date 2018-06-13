@@ -7,7 +7,17 @@ const Forecast = props => {
       <h3>Forecast</h3>
       <ul>
         {props.forecastObj.list ? (
-          props.forecastObj.list.map((dataPt, i) => <li key={i}>{dataPt.dt.toString()}</li>)
+          props.forecastObj.list.map((dataPt, i) => {
+            return (
+              <li key={i}>
+                <ul>
+                  <li>{dataPt.dt.toString()}</li>
+                  <li>{dataPt.main.temp}</li>
+                  <li>{dataPt.weather[0].icon}</li>
+                </ul>
+              </li>
+            );
+          })
         ) : (
           <li>Data Unavailable</li>
         )}
