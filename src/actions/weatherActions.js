@@ -64,15 +64,10 @@ export const setCurrentCity = currentCity => {
 };
 
 export const getForecastFor = cityName => {
+  console.log('hit action!');
   return function(dispatch) {
     ForecastData.getForecast(cityName).then(json => {
-      if (json.cod === '200') {
-        console.log('getForecastAction', json);
-        const cityForecastData = json;
-        dispatch({ type: GET_FORECAST_SUCCESS, payload: cityForecastData });
-      } else {
-        dispatch({ type: GET_FORECAST_FAIL });
-      }
+      dispatch({ type: GET_FORECAST_SUCCESS, payload: json });
     });
   };
 };
