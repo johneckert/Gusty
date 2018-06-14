@@ -6,13 +6,13 @@ const currentWeather = props => {
     <div>
       <ul>
         <li>{props.weatherObj.name}</li>
-        <li>{`${props.weatherObj.temp}\u00B0`}</li>
         <li>
           <img
             src={`./weatherIcons/${props.weatherObj.icon}.svg`}
             alt={props.weatherObj.description}
           />
         </li>
+        <li>{`${props.weatherObj.temp}\u00B0`}</li>
       </ul>
     </div>
   );

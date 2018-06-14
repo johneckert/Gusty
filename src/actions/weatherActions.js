@@ -16,6 +16,7 @@ export const getWeatherFor = cityName => {
     WeatherData.getWeather(cityName).then(json => {
       if (json.cod === 200) {
         const cityData = buildCurrentWeather(json);
+        console.log(cityData);
         dispatch({ type: GET_WEATHER_SUCCESS, payload: cityData });
       } else {
         dispatch({ type: GET_WEATHER_FAIL });
@@ -25,10 +26,12 @@ export const getWeatherFor = cityName => {
 };
 
 export const getSingleWeatherFor = cityName => {
+  console.log('city name', cityName);
   return function(dispatch) {
     WeatherData.getWeather(cityName).then(json => {
       if (json.cod === 200) {
         const cityData = buildCurrentWeather(json);
+        console.log(cityData);
         dispatch({ type: CURRENT_WEATHER_SUCCESS, payload: cityData });
       } else {
         dispatch({ type: GET_WEATHER_FAIL });
@@ -60,7 +63,7 @@ const buildCurrentWeather = json => {
   const cityData = {
     id: json.id,
     name: json.name,
-    time: json.dt,
+    time: calcLocalTime(json.dt),
     wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
     icon: parseIcon(json.weather[0].icon),
     description: json.weather[0].description,
@@ -69,6 +72,21 @@ const buildCurrentWeather = json => {
     humidity: Math.round(json.main.humidity)
   };
   return cityData;
+};
+
+const calcLocalTime = dt => {
+  const localTime = new Date(dt);
+  const hour = localTime.getHours();
+  const min = localTime.getMinutes();
+  if (hour > 12) {
+    return `${hour - 12}:${min} pm`;
+  } else if (hour === 0) {
+    return `12:${min} am`;
+  } else if (hour === 12) {
+    return `12:${min} pm`;
+  } else {
+    return `${hour}:${min} am`;
+  }
 };
 
 //Build Forecast Object from API data
@@ -92,12 +110,11 @@ const buildForecastObj = json => {
 //Build Obj for each data point in forecast
 const buildForecastItem = apiItem => {
   const forecastItem = {};
-  forecastItem.hour = getHour(apiItem);
+  forecastItem.hour = getHour(apiItem.dt_txt);
   forecastItem.day = getDayString(apiItem);
   forecastItem.icon = parseIcon(apiItem.weather[0].icon);
   forecastItem.description = apiItem.weather[0].description;
   forecastItem.temp = Math.round(apiItem.main.temp);
-  console.log('fItem', forecastItem);
   return forecastItem;
 };
 
@@ -115,8 +132,8 @@ const getDayNum = item => {
 };
 
 //calculate Hour from dateTime
-const getHour = item => {
-  const date = new Date(item.dt_txt);
+const getHour = datetime => {
+  const date = new Date(datetime);
   const hour = date.getHours();
   if (hour > 12) {
     return `${hour - 12} PM`;

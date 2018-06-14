@@ -19,7 +19,6 @@ class CityDetailContainer extends Component {
   render() {
     return (
       <div>
-        <h2>{this.props.currentCity.toUpperCase()}</h2>
         <CurrentWeather />
         <Forecast />
         <Details />

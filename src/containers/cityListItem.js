@@ -16,13 +16,13 @@ class CityListItem extends Component {
       <a href={'/' + this.formatURL(this.props.weatherObj)}>
         <ul>
           <li>{this.props.weatherObj.name}</li>
-          <li>{`${this.props.weatherObj.temp}\u00B0`}</li>
           <li>
             <img
               src={`./weatherIcons/${this.props.weatherObj.icon}.svg`}
               alt={this.props.weatherObj.description}
             />
           </li>
+          <li>{`${this.props.weatherObj.temp}\u00B0`}</li>
         </ul>
       </a>
     );

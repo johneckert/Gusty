@@ -9,7 +9,7 @@ const Forecast = props => {
         <li>
           <img src={`./colorIcons/${hourlyObj.icon}.svg`} alt={hourlyObj.description} />
         </li>
-        <li>{hourlyObj.temp}</li>
+        <li>{`${hourlyObj.temp}\u00B0`}</li>
       </ul>
     );
   };
@@ -32,7 +32,6 @@ const Forecast = props => {
       <ul>
         {props.forecastObj ? (
           Object.values(props.forecastObj).map(date => {
-            console.log('in loop', date);
             return <li key={date[0].day}>{createDay(date)}</li>;
           })
         ) : (
