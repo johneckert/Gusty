@@ -1,3 +1,98 @@
-div {
-  background-color: lightblue;
+@import url('https://fonts.googleapis.com/css?family=Maitree|Montserrat');
+
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Maitree', serif; */
+
+:root {
+  /* set color variables */
+  --salmon: #f97963;
+  --tangerine: #ffbd70;
+  --sky-blue: #74badb;
+  --almost-black: #231f20;
+  --dark-blue: #283146;
+  --teal: #076f8a;
+  --white: #ffffff;
+  --slate: rgba(192, 205, 218, 0.98);
+  --almost-clear: rgba(192, 205, 218, 0.1);
+  /* set font variables */
+  --main-font: 'Montserrat', sans-serif;
+  --title-font: 'Maitree', serif;
+  /* document setup */
+  box-sizing: border-box;
+  font-size: calc(0.5em + 1vw);
+  font-family: var(--main-font);
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+ul {
+  list-style: none;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: var(--salmon);
+  font-family: var(--title-font);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.7px;
+  padding: 1.5rem 0 1.3rem 2rem;
+}
+
+.main {
+  background-color: var(--slate);
+  display: flex;
+  flex-direction: column;
+}
+
+.city-link {
+  display: flex;
+  width: 100%;
+  padding: 5.92rem 3.34rem 5.84rem 3.34rem;
+  color: var(--white);
+  align-items: center;
+}
+
+li > img {
+  width: 2.25rem;
+  height: 2.35rem;
+}
+
+.city-link :nth-child(1) {
+  font-family: Maitree;
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  flex-basis: 87%;
+}
+
+.city-link li + li {
+  margin-left: auto;
+}
+
+.city-link :nth-child(2) {
+}
+
+.city-link :nth-child(3) {
 }

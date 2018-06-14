@@ -5,13 +5,15 @@ import CityListItem from './cityListItem';
 class IndexContainer extends Component {
   render() {
     return this.props.weatherObjs.length > 0 ? (
-      <div>
+      <div className="main">
         {this.props.weatherObjs.map(weatherObj => {
           return <CityListItem key={weatherObj.id} weatherObj={weatherObj} />;
         })}
       </div>
     ) : (
-      <div>LOADING...</div>
+      <div className="main">
+        <h2>LOADING...</h2>
+      </div>
     );
   }
 }

@@ -18,7 +18,7 @@ class CityDetailContainer extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="main">
         <CurrentWeather />
         <ForecastContainer />
         <Details />

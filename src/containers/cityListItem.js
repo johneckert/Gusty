@@ -8,13 +8,13 @@ class CityListItem extends Component {
       .split(' ')
       .join('-')
       .toLowerCase();
-    return url;
+    return `/${url}`;
   };
 
   render() {
     return (
-      <a href={'/' + this.formatURL(this.props.weatherObj)}>
-        <ul>
+      <a href={this.formatURL(this.props.weatherObj)}>
+        <ul className="city-link">
           <li>{this.props.weatherObj.name}</li>
           <li>
             <img

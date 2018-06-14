@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = () => {
-  return <h1>HEADER</h1>;
+  return <div className="header">Weather App Name</div>;
 };
 
 export default Header;
