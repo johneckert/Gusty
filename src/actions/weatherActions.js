@@ -1,11 +1,8 @@
 import {
-  GET_WEATHER_OBJECTS,
   GET_WEATHER_SUCCESS,
   GET_WEATHER_FAIL,
   GET_FORECAST_SUCCESS,
-  GET_FORECAST_FAIL,
   CURRENT_WEATHER_SUCCESS,
-  FIND_RELEVANT_WEATHER_OBJECT,
   SET_CURRENT_CITY
 } from './actionTypes';
 import WeatherData from '../services/weatherDataAPI';
@@ -16,7 +13,6 @@ export const getWeatherFor = cityName => {
     WeatherData.getWeather(cityName).then(json => {
       if (json.cod === 200) {
         const cityData = buildCurrentWeather(json);
-        console.log(cityData);
         dispatch({ type: GET_WEATHER_SUCCESS, payload: cityData });
       } else {
         dispatch({ type: GET_WEATHER_FAIL });
