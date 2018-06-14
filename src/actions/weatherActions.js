@@ -21,7 +21,8 @@ export const getWeatherFor = cityName => {
           name: json.name,
           time: json.dt,
           wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
-          icon: json.weather[0].icon,
+          icon: parseIcon(json.weather[0].icon),
+          description: json.weather[0].description,
           temp: Math.round(json.main.temp),
           pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
           humidity: Math.round(json.main.humidity)
@@ -44,7 +45,8 @@ export const getSingleWeatherFor = cityName => {
           name: json.name,
           time: json.dt,
           wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
-          icon: json.weather[0].icon,
+          icon: parseIcon(json.weather[0].icon),
+          description: json.weather[0].description,
           temp: Math.round(json.main.temp),
           pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
           humidity: Math.round(json.main.humidity)
@@ -106,5 +108,49 @@ const direction = w => {
     return 'NNW';
   } else {
     return '--';
+  }
+};
+
+const parseIcon = icon => {
+  switch (icon) {
+    case '01d':
+      return 'sun';
+    case '01n':
+      return 'moon';
+    case '02d':
+      return 'partSun';
+    case '02n':
+      return 'partMoon';
+    case '03d':
+      return 'cloud';
+    case '03n':
+      return 'cloud';
+    case '04d':
+      return 'cloud';
+    case '04n':
+      return 'cloud';
+    case '09d':
+      return 'rain';
+    case '09n':
+      return 'rain';
+    case '10d':
+      return 'heavyRain';
+    case '10n':
+      return 'heavyRain';
+    case '11d':
+      return 'thunderstorm';
+    case '11n':
+      return 'thunderstorm';
+    case '13d':
+      return 'snow';
+    case '13n':
+      return 'snow';
+    case '50d':
+      return 'mist';
+    case '50n':
+      return 'mist';
+
+    default:
+      return;
   }
 };

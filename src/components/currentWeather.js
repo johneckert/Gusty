@@ -6,7 +6,7 @@ const currentWeather = props => {
     <div>
       <ul>
         <li>Name: {props.weatherObj.name}</li>
-        <li>Temp: {props.weatherObj.temp}</li>
+        <li>{`${props.weatherObj.temp}&deg;`}</li>
         <li>Icon: {props.weatherObj.icon}</li>
       </ul>
     </div>
