@@ -67,6 +67,7 @@ export const getForecastFor = cityName => {
   console.log('hit action!');
   return function(dispatch) {
     ForecastData.getForecast(cityName).then(json => {
+      //PARSE FORECAST
       dispatch({ type: GET_FORECAST_SUCCESS, payload: json });
     });
   };

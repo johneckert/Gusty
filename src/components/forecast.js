@@ -12,8 +12,10 @@ const Forecast = props => {
               <li key={i}>
                 <ul>
                   <li>{dataPt.dt.toString()}</li>
-                  <li>{dataPt.main.temp}</li>
-                  <li>{dataPt.weather[0].icon}</li>
+                  <li>{`${dataPt.main.temp}\u00B0`}</li>
+                  <li>
+                    <img src={`./colorIcons/${dataPt.icon}.svg`} alt={dataPt.description} />
+                  </li>
                 </ul>
               </li>
             );

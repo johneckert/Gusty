@@ -5,9 +5,14 @@ const currentWeather = props => {
   return (
     <div>
       <ul>
-        <li>Name: {props.weatherObj.name}</li>
-        <li>{`${props.weatherObj.temp}&deg;`}</li>
-        <li>Icon: {props.weatherObj.icon}</li>
+        <li>{props.weatherObj.name}</li>
+        <li>{`${props.weatherObj.temp}\u00B0`}</li>
+        <li>
+          <img
+            src={`./weatherIcons/${props.weatherObj.icon}.svg`}
+            alt={props.weatherObj.description}
+          />
+        </li>
       </ul>
     </div>
   );
