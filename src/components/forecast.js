@@ -2,25 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Forecast = props => {
+  const createTime = hourlyObj => {
+    return (
+      <ul>
+        <li>{hourlyObj.hour}</li>
+        <li>
+          <img src={`./colorIcons/${hourlyObj.icon}.svg`} alt={hourlyObj.description} />
+        </li>
+        <li>{hourlyObj.temp}</li>
+      </ul>
+    );
+  };
+
+  const createDay = dayArr => {
+    return (
+      <div>
+        <h4>{dayArr[0].day}</h4>
+        <ul>
+          {dayArr.map((hourlyObj, i) => {
+            return <li key={i}>{createTime(hourlyObj)}</li>;
+          })}
+        </ul>
+      </div>
+    );
+  };
   return (
     <div>
-      <h3>Forecast</h3>
+      <h3>5 Day Forecast</h3>
       <ul>
-        {props.forecastObj.list ? (
-          props.forecastObj.list.map((dataPt, i) => {
-            console.log(i, dataPt);
-            const date = new Date(dataPt.dt_txt);
-            return (
-              <li key={i}>
-                <ul>
-                  <li>{date.getHours()}</li>
-                  <li>{`${dataPt.main.temp}\u00B0`}</li>
-                  <li>
-                    <img src={`./colorIcons/${dataPt.icon}.svg`} alt={dataPt.description} />
-                  </li>
-                </ul>
-              </li>
-            );
+        {props.forecastObj ? (
+          Object.values(props.forecastObj).map(date => {
+            console.log('in loop', date);
+            return <li key={date[0].day}>{createDay(date)}</li>;
           })
         ) : (
           <li>Data Unavailable</li>

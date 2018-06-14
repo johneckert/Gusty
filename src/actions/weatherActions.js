@@ -46,7 +46,7 @@ export const getForecastFor = cityName => {
   return function(dispatch) {
     ForecastData.getForecast(cityName).then(json => {
       const forecastObj = buildForecastObj(json);
-      console.log(forecastObj);
+      console.log('forecastObj in action', forecastObj);
       dispatch({ type: GET_FORECAST_SUCCESS, payload: forecastObj });
     });
   };
@@ -88,6 +88,7 @@ const buildForecastObj = json => {
   });
   return forecastObj;
 };
+
 //Build Obj for each data point in forecast
 const buildForecastItem = apiItem => {
   const forecastItem = {};
