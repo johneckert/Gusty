@@ -15,18 +15,7 @@ export const getWeatherFor = cityName => {
   return function(dispatch) {
     WeatherData.getWeather(cityName).then(json => {
       if (json.cod === 200) {
-        //build city data
-        const cityData = {
-          id: json.id,
-          name: json.name,
-          time: json.dt,
-          wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
-          icon: parseIcon(json.weather[0].icon),
-          description: json.weather[0].description,
-          temp: Math.round(json.main.temp),
-          pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
-          humidity: Math.round(json.main.humidity)
-        };
+        const cityData = buildCurrentWeather(json);
         dispatch({ type: GET_WEATHER_SUCCESS, payload: cityData });
       } else {
         dispatch({ type: GET_WEATHER_FAIL });
@@ -39,18 +28,7 @@ export const getSingleWeatherFor = cityName => {
   return function(dispatch) {
     WeatherData.getWeather(cityName).then(json => {
       if (json.cod === 200) {
-        //build city data
-        const cityData = {
-          id: json.id,
-          name: json.name,
-          time: json.dt,
-          wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
-          icon: parseIcon(json.weather[0].icon),
-          description: json.weather[0].description,
-          temp: Math.round(json.main.temp),
-          pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
-          humidity: Math.round(json.main.humidity)
-        };
+        const cityData = buildCurrentWeather(json);
         dispatch({ type: CURRENT_WEATHER_SUCCESS, payload: cityData });
       } else {
         dispatch({ type: GET_WEATHER_FAIL });
@@ -67,10 +45,87 @@ export const getForecastFor = cityName => {
   console.log('hit action!');
   return function(dispatch) {
     ForecastData.getForecast(cityName).then(json => {
-      //PARSE FORECAST
-      dispatch({ type: GET_FORECAST_SUCCESS, payload: json });
+      const forecastObj = buildForecastObj(json);
+      console.log(forecastObj);
+      dispatch({ type: GET_FORECAST_SUCCESS, payload: forecastObj });
     });
   };
+};
+
+/////////////// HELPER METHODS /////////////////////////
+
+//Build Current Weather
+
+const buildCurrentWeather = json => {
+  const cityData = {
+    id: json.id,
+    name: json.name,
+    time: json.dt,
+    wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
+    icon: parseIcon(json.weather[0].icon),
+    description: json.weather[0].description,
+    temp: Math.round(json.main.temp),
+    pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
+    humidity: Math.round(json.main.humidity)
+  };
+  return cityData;
+};
+
+//Build Forecast Object from API data
+
+//Build Forecast from data points by sorting into arrays by numeric day
+const buildForecastObj = json => {
+  const forecastObj = {};
+  json.list.forEach(apiItem => {
+    const forecastItem = buildForecastItem(apiItem);
+    const date = getDayNum(apiItem);
+    if (forecastObj[date]) {
+      forecastObj[date].push(forecastItem);
+    } else {
+      forecastObj[date] = [];
+      forecastObj[date].push(forecastItem);
+    }
+  });
+  return forecastObj;
+};
+//Build Obj for each data point in forecast
+const buildForecastItem = apiItem => {
+  const forecastItem = {};
+  forecastItem.hour = getHour(apiItem);
+  forecastItem.day = getDayString(apiItem);
+  forecastItem.icon = parseIcon(apiItem.weather[0].icon);
+  forecastItem.description = apiItem.weather[0].description;
+  forecastItem.temp = Math.round(apiItem.main.temp);
+  console.log('fItem', forecastItem);
+  return forecastItem;
+};
+
+//calculate day name from dateTime
+const getDayString = item => {
+  const week = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  const date = new Date(item.dt_txt);
+  return week[date.getDay()];
+};
+
+//gets day number
+const getDayNum = item => {
+  const date = new Date(item.dt_txt);
+  return date.getDate();
+};
+
+//calculate Hour from dateTime
+const getHour = item => {
+  const date = new Date(item.dt_txt);
+  const hour = date.getHours();
+  if (hour > 12) {
+    return `${hour - 12} PM`;
+  } else if (hour === 0) {
+    return '12 AM';
+  } else if (hour === 12) {
+    return '12 PM';
+  } else {
+    return `${hour} AM`;
+  }
 };
 
 //Calculate Wind Direction from degrees
@@ -112,6 +167,7 @@ const direction = w => {
   }
 };
 
+//get correct svg name from API code
 const parseIcon = icon => {
   switch (icon) {
     case '01d':

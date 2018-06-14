@@ -8,10 +8,12 @@ const Forecast = props => {
       <ul>
         {props.forecastObj.list ? (
           props.forecastObj.list.map((dataPt, i) => {
+            console.log(i, dataPt);
+            const date = new Date(dataPt.dt_txt);
             return (
               <li key={i}>
                 <ul>
-                  <li>{dataPt.dt.toString()}</li>
+                  <li>{date.getHours()}</li>
                   <li>{`${dataPt.main.temp}\u00B0`}</li>
                   <li>
                     <img src={`./colorIcons/${dataPt.icon}.svg`} alt={dataPt.description} />
