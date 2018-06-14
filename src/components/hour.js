@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hour = props => {
   return (
-    <ul>
+    <ul className="hour">
       <li>{props.hourObj.hour}</li>
       <li>
         <img src={`./colorIcons/${props.hourObj.icon}.svg`} alt={props.hourObj.description} />

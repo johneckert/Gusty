@@ -1,26 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Maitree|Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Maitree|Montserrat:200,400,500,600');
 
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Maitree', serif; */
 
 :root {
   /* set color variables */
-  --salmon: #f97963;
-  --tangerine: #ffbd70;
-  --sky-blue: #74badb;
-  --almost-black: #231f20;
-  --dark-blue: #283146;
-  --teal: #076f8a;
+  --header-color: #f97963;
+  --day-clear: #ffbd70; /* daytime clear */
+  --day-clouds: #74badb; /* daytime clouds */
+  --night-clouds: #283146; /* night clouds */
+  --night-clear: #172a53; /* night clear */
+  --day-rain: #076f8a; /*daytime rain or tstorm */
   --white: #ffffff;
-  --slate: rgba(192, 205, 218, 0.98);
-  --almost-clear: rgba(192, 205, 218, 0.1);
+  --slate: rgba(192, 205, 218); /*snow, mist */
+  --text-black: #4a4a4a;
+  --text-grey: rgba(0, 0, 0, 0.25);
   /* set font variables */
   --main-font: 'Montserrat', sans-serif;
   --title-font: 'Maitree', serif;
   /* document setup */
   box-sizing: border-box;
-  font-size: calc(0.5em + 1vw);
+  font-size: calc(0.3em + 1vw);
   font-family: var(--main-font);
+  font-weight: 500;
 }
 
 *,
@@ -51,12 +53,11 @@ a:visited {
 }
 
 .header {
-  background-color: var(--salmon);
+  background-color: var(--header-color);
   font-family: var(--title-font);
   font-size: 2.25rem;
   font-weight: 600;
   color: var(--white);
-  letter-spacing: 0.7px;
   padding: 1.5rem 0 1.3rem 2rem;
 }
 
@@ -66,7 +67,9 @@ a:visited {
   flex-direction: column;
 }
 
-.city-link {
+/* Styling for city panel */
+
+.city-panel {
   display: flex;
   width: 100%;
   padding: 5.92rem 3.34rem 5.84rem 3.34rem;
@@ -75,21 +78,81 @@ a:visited {
 }
 
 li > img {
-  width: 2.25rem;
-  height: 2.35rem;
+  width: 3.125rem;
+  height: 3.125rem;
 }
 
-.city-link :nth-child(1) {
+.city-panel :nth-child(1) {
   font-family: Maitree;
   font-size: 2.25rem;
   font-weight: 600;
-  letter-spacing: 0.7px;
   flex-basis: 87%;
 }
 
-.city-link li + li {
+.city-panel li + li {
   margin-left: auto;
 }
 
-.city-link :nth-child(3) {
+.city-panel :nth-child(3) {
+  font-weight: 200;
+  font-size: 2.25rem;
+  padding-left: 3.34rem;
+}
+
+/* styling for forecast panel */
+
+.forecast-panel {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 3.34rem;
+  color: var(--text-black);
+  align-items: left;
+}
+
+h2 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-grey);
+  padding: 1.4rem 0 0.625rem;
+  margin: 0;
+}
+
+.forecast-panel > ul {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.day {
+  flex-direction: column;
+  display: flex;
+}
+
+.hour-container {
+  display: flex;
+  padding: 0;
+}
+
+.hour {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.625rem 0.55rem 0 0.7rem;
+}
+
+.hour-container > ul li:first-child {
+  font-size: 0.875rem;
+}
+
+.hour-container > ul li:nth-child(3) {
+  font-size: 1.125rem;
+  font-weight: 200;
 }

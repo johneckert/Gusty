@@ -3,18 +3,16 @@ import { connect } from 'react-redux';
 
 const currentWeather = props => {
   return (
-    <div>
-      <ul>
-        <li>{props.weatherObj.name}</li>
-        <li>
-          <img
-            src={`./weatherIcons/${props.weatherObj.icon}.svg`}
-            alt={props.weatherObj.description}
-          />
-        </li>
-        <li>{`${props.weatherObj.temp}\u00B0`}</li>
-      </ul>
-    </div>
+    <ul className="city-panel">
+      <li>{props.weatherObj.name}</li>
+      <li>
+        <img
+          src={`./weatherIcons/${props.weatherObj.icon}.svg`}
+          alt={props.weatherObj.description}
+        />
+      </li>
+      <li>{`${props.weatherObj.temp}\u00B0`}</li>
+    </ul>
   );
 };
 

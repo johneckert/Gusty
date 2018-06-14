@@ -4,8 +4,8 @@ import Day from '../components/day';
 
 const ForecastContainer = props => {
   return (
-    <div>
-      <h3>5 Day Forecast</h3>
+    <div className="forecast-panel">
+      <h2>5 Day Forecast</h2>
       <ul>
         {props.forecastObj ? (
           Object.values(props.forecastObj).map(dayArr => {
