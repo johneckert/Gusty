@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CurrentWeather from '../components/currentWeather';
-import Forecast from '../components/forecast';
+import ForecastContainer from './forecastContainer';
 import Details from '../components/details';
 import { setCurrentCity, getSingleWeatherFor, getForecastFor } from '../actions/weatherActions';
 
@@ -20,7 +20,7 @@ class CityDetailContainer extends Component {
     return (
       <div>
         <CurrentWeather />
-        <Forecast />
+        <ForecastContainer />
         <Details />
       </div>
     );
