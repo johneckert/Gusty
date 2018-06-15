@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <a href="/">
       <div className="header">
-        <h1>Gusty</h1>
+        <img src="./logo.svg" alt="wind logo" />
       </div>
     </a>
   );
