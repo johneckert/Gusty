@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const currentWeather = props => {
   return (
-    <ul className="city-panel">
+    <ul className={`city-panel ${props.weatherObj.color}`}>
       <li>{props.weatherObj.name}</li>
       <li>
         <img

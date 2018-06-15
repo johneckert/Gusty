@@ -14,7 +14,7 @@ class CityListItem extends Component {
   render() {
     return (
       <a href={this.formatURL(this.props.weatherObj)}>
-        <ul className="city-panel">
+        <ul className={`city-panel ${this.props.weatherObj.color}`}>
           <li>{this.props.weatherObj.name}</li>
           <li>
             <img

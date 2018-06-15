@@ -10,9 +10,10 @@ font-family: 'Maitree', serif; */
   --white: #ffffff;
   --day-clear: #ffbd70; /* daytime clear */
   --day-clouds: #74badb; /* daytime clouds */
-  --night-clouds: #283146; /* night clouds */
   --night-clear: #172a53; /* night clear */
-  --day-rain: #076f8a; /*daytime rain or tstorm */
+  --night-clouds: #283146; /* night clouds */
+  --day-rain: #076f8a; /* daytime rain or tstorm */
+  --night-rain: purple; /* nighttime rain or tstorm */
   --snow: #c0cdda; /*snow, mist */
   --text-black: #4a4a4a;
   --text-grey: rgba(0, 0, 0, 0.25);
@@ -101,7 +102,6 @@ h4 {
   padding: 5.92rem 3.34rem 5.84rem 3.34rem;
   color: var(--white);
   align-items: center;
-  background-color: var(--day-rain); /****** PLACE HOLDER */
 }
 
 li > img {
@@ -191,4 +191,32 @@ hr {
   height: 0.065rem;
   color: rgba(151, 151, 151, 0.22);
   border: solid 0.032rem rgba(151, 151, 151, 0.22);
+}
+
+.sun {
+  background-color: var(--day-clear);
+}
+
+.moon {
+  background-color: var(--night-clear);
+}
+
+.day-clouds {
+  background-color: var(--day-clouds);
+}
+
+.night-clouds {
+  background-color: var(--night-clouds);
+}
+
+.day-rain {
+  background-color: var(--day-rain);
+}
+
+.night-rain {
+  background-color: var(--night-rain);
+}
+
+.snow {
+  background-color: var(--snow);
 }

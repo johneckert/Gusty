@@ -62,12 +62,56 @@ const buildCurrentWeather = json => {
     time: calcLocalTime(json.dt),
     wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
     icon: parseIcon(json.weather[0].icon),
+    color: parseColor(json.weather[0].icon),
     description: json.weather[0].description,
     temp: Math.round(json.main.temp),
     pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
     humidity: Math.round(json.main.humidity)
   };
   return cityData;
+};
+
+const parseColor = icon => {
+  switch (icon) {
+    case '01d':
+      return 'sun';
+    case '01n':
+      return 'moon';
+    case '02d':
+      return 'day-clouds';
+    case '02n':
+      return 'night-clouds';
+    case '03d':
+      return 'day-clouds';
+    case '03n':
+      return 'night-clouds';
+    case '04d':
+      return 'day-clouds';
+    case '04n':
+      return 'night-clouds';
+    case '09d':
+      return 'day-rain';
+    case '09n':
+      return 'night-rain';
+    case '10d':
+      return 'day-rain';
+    case '10n':
+      return 'night-rain';
+    case '11d':
+      return 'day-rain';
+    case '11n':
+      return 'night-rain';
+    case '13d':
+      return 'snow';
+    case '13n':
+      return 'snow';
+    case '50d':
+      return 'snow';
+    case '50n':
+      return 'snow';
+    default:
+      return 'day-clouds';
+  }
 };
 
 const calcLocalTime = dt => {
@@ -220,7 +264,6 @@ const parseIcon = icon => {
       return 'mist';
     case '50n':
       return 'mist';
-
     default:
       return;
   }
