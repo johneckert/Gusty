@@ -23,6 +23,7 @@ const ForecastContainer = props => {
           )}
         </ul>
       )}
+      <img className="arrow" src="./chevron_right.svg" alt="wind logo" />
     </div>
   );
 };
