@@ -34,7 +34,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchSetCurrentCity: currentCity => dispatch(setCurrentCity(currentCity))
+    // dispatchSetCurrentCity: currentCity => dispatch(setCurrentCity(currentCity))
   };
 };
 
