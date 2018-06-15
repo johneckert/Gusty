@@ -220,13 +220,13 @@ const parseColor = icon => {
     case '11n':
       return 'night-rain';
     case '13d':
-      return 'snow';
+      return 'day-snow';
     case '13n':
-      return 'snow';
+      return 'night-snow';
     case '50d':
-      return 'snow';
+      return 'day-snow';
     case '50n':
-      return 'snow';
+      return 'night-snow';
     default:
       return 'day-clouds';
   }

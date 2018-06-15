@@ -10,11 +10,12 @@ font-family: 'Maitree', serif; */
   --white: #ffffff;
   --day-clear: #ffbd70; /* daytime clear */
   --day-clouds: #74badb; /* daytime clouds */
-  --night-clear: #172a53; /* night clear */
-  --night-clouds: #283146; /* night clouds */
-  --day-rain: #076f8a; /* daytime rain or tstorm */
-  --night-rain: purple; /* nighttime rain or tstorm */
-  --snow: #c0cdda; /*snow, mist */
+  --night-clear: #414979; /* night clear */
+  --night-clouds: #9099a2; /* night clouds */
+  --day-rain: #80a19b; /* daytime rain or tstorm */
+  --night-rain: #283146; /* nighttime rain or tstorm */
+  --day-snow: rgba(192, 205, 218, 0.98); /*snow, mist */
+  --night-snow: #8491ae; /*snow, mist */
   --text-black: #4a4a4a;
   --text-grey: rgba(0, 0, 0, 0.25);
   /* set font variables */
@@ -234,8 +235,12 @@ hr {
   background-color: var(--night-rain);
 }
 
-.snow {
-  background-color: var(--snow);
+.day-snow {
+  background-color: var(--day-snow);
+}
+
+.night-snow {
+  background-color: var(--night-snow);
 }
 
 .skyline-chicago {
@@ -281,4 +286,111 @@ hr {
   top: 0;
   left: 0;
   width: 100%;
+}
+
+/* LOADING DOTS */
+
+.loader {
+  margin: 0;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-loader {
+  align-self: center;
+  padding: 120px;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+
+  grid-column-start: col-1;
+  grid-column-end: col-2;
+  grid-row-start: row-b;
+  grid-row-end: row-c;
+}
+
+.loading-dot {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: var(--day-rain);
+}
+
+.one {
+  animation-duration: 1s;
+  animation-name: loading-one;
+  animation-iteration-count: infinite;
+}
+
+.two {
+  animation-duration: 1s;
+  animation-name: loading-two;
+  animation-iteration-count: infinite;
+}
+
+.three {
+  animation-duration: 1s;
+  animation-name: loading-three;
+  animation-iteration-count: infinite;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes loading-one {
+  0% {
+    opacity: 1;
+  }
+
+  33% {
+    opacity: 0.5;
+  }
+
+  66% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes loading-two {
+  0% {
+    opacity: 0.5;
+  }
+
+  33% {
+    opacity: 1;
+  }
+
+  66% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes loading-three {
+  0% {
+    opacity: 0.5;
+  }
+
+  33% {
+    opacity: 0.5;
+  }
+
+  66% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
 }
