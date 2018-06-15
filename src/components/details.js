@@ -15,27 +15,27 @@ const Details = props => {
       <h2>Details</h2>
       <ul>
         <li>
-          <h2>DESCRIPTION</h2>
+          <h5>DESCRIPTION</h5>
           <h4>{formated(props.weatherObj.description)}</h4>
         </li>
         <li />
         <li>
-          <h2>LOCAL TIME</h2>
+          <h5>LOCAL TIME</h5>
           <h4>{props.weatherObj.time}</h4>
         </li>
       </ul>
       <hr />
       <ul>
         <li>
-          <h2>HUMIDITY</h2>
+          <h5>HUMIDITY</h5>
           <h4>{props.weatherObj.humidity}%</h4>
         </li>
         <li>
-          <h2>PRESSURE</h2>
+          <h5>PRESSURE</h5>
           <h4>{props.weatherObj.pressure} mHg</h4>
         </li>
         <li>
-          <h2>WIND</h2>
+          <h5>WIND</h5>
           <h4>{props.weatherObj.wind} mph</h4>
         </li>
       </ul>

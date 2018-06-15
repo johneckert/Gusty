@@ -94,6 +94,15 @@ h4 {
   margin: 0;
 }
 
+h5 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--main-font);
+  color: #4a4a4a;
+  padding: 1.4rem 0 0.625rem;
+  margin: 0;
+}
+
 /* Styling for city panel */
 
 .city-panel {
