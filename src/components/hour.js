@@ -7,7 +7,9 @@ const Hour = props => {
       <li>
         <img src={`./colorIcons/${props.hourObj.icon}.svg`} alt={props.hourObj.description} />
       </li>
-      <li>{`${props.hourObj.temp}\u00B0`}</li>
+      <li>
+        <h4>{`${props.hourObj.temp}\u00B0`}</h4>
+      </li>
     </ul>
   );
 };

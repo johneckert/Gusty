@@ -11,14 +11,33 @@ const Details = props => {
   };
 
   return (
-    <div>
-      <h3>Details</h3>
+    <div className="details-panel">
+      <h2>Details</h2>
       <ul>
-        <li>DESCRIPTION {formated(props.weatherObj.description)}</li>
-        <li>LOCAL TIME {props.weatherObj.time}</li>
-        <li>HUMIDITY {props.weatherObj.humidity}%</li>
-        <li>PRESSURE {props.weatherObj.pressure} mHg</li>
-        <li>WIND {props.weatherObj.wind} mph</li>
+        <li>
+          <h2>DESCRIPTION</h2>
+          <h4>{formated(props.weatherObj.description)}</h4>
+        </li>
+        <li />
+        <li>
+          <h2>LOCAL TIME</h2>
+          <h4>{props.weatherObj.time}</h4>
+        </li>
+      </ul>
+      <hr />
+      <ul>
+        <li>
+          <h2>HUMIDITY</h2>
+          <h4>{props.weatherObj.humidity}%</h4>
+        </li>
+        <li>
+          <h2>PRESSURE</h2>
+          <h4>{props.weatherObj.pressure} mHg</h4>
+        </li>
+        <li>
+          <h2>WIND</h2>
+          <h4>{props.weatherObj.wind} mph</h4>
+        </li>
       </ul>
     </div>
   );

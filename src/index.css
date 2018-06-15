@@ -5,14 +5,15 @@ font-family: 'Maitree', serif; */
 
 :root {
   /* set color variables */
-  --header-color: #f97963;
+  --header: #f97963;
+  --details: #f9fafb;
+  --white: #ffffff;
   --day-clear: #ffbd70; /* daytime clear */
   --day-clouds: #74badb; /* daytime clouds */
   --night-clouds: #283146; /* night clouds */
   --night-clear: #172a53; /* night clear */
   --day-rain: #076f8a; /*daytime rain or tstorm */
-  --white: #ffffff;
-  --slate: rgba(192, 205, 218); /*snow, mist */
+  --snow: #c0cdda; /*snow, mist */
   --text-black: #4a4a4a;
   --text-grey: rgba(0, 0, 0, 0.25);
   /* set font variables */
@@ -53,11 +54,7 @@ a:visited {
 }
 
 .header {
-  background-color: var(--header-color);
-  font-family: var(--title-font);
-  font-size: 2.25rem;
-  font-weight: 600;
-  color: var(--white);
+  background-color: var(--header);
   padding: 1.5rem 0 1.3rem 2rem;
 }
 
@@ -65,6 +62,35 @@ a:visited {
   background-color: var(--slate);
   display: flex;
   flex-direction: column;
+}
+
+h1 {
+  font-family: var(--title-font);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--white);
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-grey);
+  padding: 1.4rem 0 0.625rem;
+  margin: 0;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 200;
+  margin: 0;
 }
 
 /* Styling for city panel */
@@ -75,6 +101,7 @@ a:visited {
   padding: 5.92rem 3.34rem 5.84rem 3.34rem;
   color: var(--white);
   align-items: center;
+  background-color: var(--day-rain); /****** PLACE HOLDER */
 }
 
 li > img {
@@ -111,21 +138,6 @@ li > img {
   align-items: left;
 }
 
-h2 {
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: #4a4a4a;
-  margin: 0;
-}
-
-h4 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text-grey);
-  padding: 1.4rem 0 0.625rem;
-  margin: 0;
-}
-
 .forecast-panel > ul {
   display: flex;
   overflow-x: scroll;
@@ -152,7 +164,31 @@ h4 {
   font-size: 0.875rem;
 }
 
-.hour-container > ul li:nth-child(3) {
-  font-size: 1.125rem;
-  font-weight: 200;
+.details-panel {
+  background-color: var(--details);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5.92rem 3.34rem 5.84rem 3.34rem;
+}
+
+.details-panel > ul {
+  padding: 2.5rem 0 2.5rem 5.125rem;
+  display: flex;
+}
+
+.details-panel > ul > li {
+  flex-direction: column;
+  flex-basis: 33.334%;
+}
+
+.details-panel > ul > li > h2 {
+  padding-bottom: 0.625rem;
+}
+
+hr {
+  width: 90vw;
+  height: 0.065rem;
+  color: rgba(151, 151, 151, 0.22);
+  border: solid 0.032rem rgba(151, 151, 151, 0.22);
 }
