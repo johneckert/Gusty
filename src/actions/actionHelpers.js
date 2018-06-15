@@ -1,7 +1,8 @@
-/////////////// HELPER METHODS /////////////////////////
+/**
+ *  HELPER FUNCTIONS FOR ACTIONS
+ */
 
-//Build Current Weather
-
+//Assemble weatherObj from json
 export const buildCurrentWeather = json => {
   const cityData = {
     id: json.id || '--',
@@ -18,8 +19,9 @@ export const buildCurrentWeather = json => {
   return cityData;
 };
 
+//Empty weatherObj to be returned if response isn't 200
 export const currentError = {
-  id: 5,
+  id: 0,
   name: 'Data Unavailable',
   time: '--',
   wind: '--',
@@ -31,8 +33,7 @@ export const currentError = {
   humidity: '--'
 };
 
-//Build Forecast Objects
-
+//Assemble full forecastObj from individual forecastItems
 export const buildForecastObj = json => {
   const forecastObj = {};
   json.list.forEach(apiItem => {
@@ -48,9 +49,10 @@ export const buildForecastObj = json => {
   return forecastObj;
 };
 
+//Forecast error object to be returned if response isnt 200
 export const forecastError = { error: true };
 
-//Build Forecast from data points by sorting into arrays by numeric day
+//Assemble forcastItem (individual 3hr data point) from json
 const buildForecastItem = apiItem => {
   const forecastItem = {};
   forecastItem.hour = getHour(apiItem.dt_txt);
