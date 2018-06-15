@@ -3,18 +3,17 @@ import { connect } from 'react-redux';
 import { setCurrentCity } from '../actions/weatherActions';
 
 class CityListItem extends Component {
-  formatURL = weatherObj => {
-    const url = weatherObj.name
-      .split(' ')
-      .join('-')
-      .toLowerCase();
-    return `/${url}`;
-  };
+  cityURL = this.props.weatherObj.name
+    ? this.props.weatherObj.name
+        .split(' ')
+        .join('-')
+        .toLowerCase()
+    : null;
 
   render() {
     return (
-      <a href={this.formatURL(this.props.weatherObj)}>
-        <ul className={`city-panel ${this.props.weatherObj.color}`}>
+      <a href={`/${this.cityURL}`}>
+        <ul className={`city-panel skyline-${this.cityURL} ${this.props.weatherObj.color}`}>
           <li>{this.props.weatherObj.name}</li>
           <li>
             <img

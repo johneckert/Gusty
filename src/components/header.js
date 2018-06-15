@@ -2,9 +2,11 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="header">
-      <h1>Weather App Name</h1>
-    </div>
+    <a href="/">
+      <div className="header">
+        <h1>Weather App Name</h1>
+      </div>
+    </a>
   );
 };
 

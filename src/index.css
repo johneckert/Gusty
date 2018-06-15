@@ -220,3 +220,48 @@ hr {
 .snow {
   background-color: var(--snow);
 }
+
+.skyline-chicago {
+  background-size: cover;
+  background-image: url('./skylines/chicago.svg');
+  background-blend-mode: overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.skyline-frankfurt {
+  background-size: cover;
+  background-image: url('./skylines/frankfurt.svg');
+  background-blend-mode: overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.skyline-hong-kong {
+  background-size: cover;
+  background-image: url('./skylines/hong-kong.svg');
+  background-blend-mode: overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.skyline-new-york {
+  background-size: cover;
+  background-image: url('./skylines/new-york.svg');
+  background-blend-mode: overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.skyline-shanghai {
+  background-size: cover;
+  background-image: url('./skylines/shanghai.svg');
+  background-blend-mode: overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

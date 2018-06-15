@@ -2,8 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const currentWeather = props => {
+  const cityName = props.weatherObj.name
+    ? props.weatherObj.name
+        .split(' ')
+        .join('-')
+        .toLowerCase()
+    : null;
+
   return (
-    <ul className={`city-panel ${props.weatherObj.color}`}>
+    <ul className={`city-panel skyline-${cityName} ${props.weatherObj.color}`}>
       <li>{props.weatherObj.name}</li>
       <li>
         <img
