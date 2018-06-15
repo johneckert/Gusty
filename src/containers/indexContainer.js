@@ -17,7 +17,7 @@ class IndexContainer extends Component {
   };
 
   render() {
-    return this.props.weatherObjs.length === 5 ? (
+    return this.props.weatherObjs.length === 5 ? ( //change this number if more cities are added
       <div className="main">
         {this.sortedCities().map(weatherObj => {
           return <CityListItem key={weatherObj.id} weatherObj={weatherObj} />;
