@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CityListItem from './cityListItem';
+import CityListItem from '../components/cityListItem';
 
 class IndexContainer extends Component {
   render() {
