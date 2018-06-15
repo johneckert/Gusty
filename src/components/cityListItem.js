@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class CityListItem extends Component {
-  cityURL = this.props.weatherObj.name
-    ? this.props.weatherObj.name
-        .split(' ')
-        .join('-')
-        .toLowerCase()
-    : null;
-
-  render() {
-    return (
-      <a href={`/${this.cityURL}`}>
-        <ul className={`city-panel skyline-${this.cityURL} ${this.props.weatherObj.color}`}>
-          <li>{this.props.weatherObj.name}</li>
-          <li>
-            <img
-              src={`./weatherIcons/${this.props.weatherObj.icon}.svg`}
-              alt={this.props.weatherObj.description}
-            />
-          </li>
-          <li>{`${this.props.weatherObj.temp}\u00B0`}</li>
-        </ul>
-      </a>
-    );
-  }
-}
+const CityListItem = props => {
+  return (
+    <a href={`/${props.weatherObj.url}`}>
+      <ul className={`city-panel skyline-${props.weatherObj.url} ${props.weatherObj.color}`}>
+        <li>{props.weatherObj.name}</li>
+        <li>
+          <img
+            src={`./weatherIcons/${props.weatherObj.icon}.svg`}
+            alt={props.weatherObj.description}
+          />
+        </li>
+        <li>{`${props.weatherObj.temp}\u00B0`}</li>
+      </ul>
+    </a>
+  );
+};
 
 const mapStateToProps = state => {
   return { currentCity: state.currentCity };

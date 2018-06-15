@@ -1,16 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const currentWeather = props => {
-  const cityName = props.weatherObj.name
-    ? props.weatherObj.name
-        .split(' ')
-        .join('-')
-        .toLowerCase()
-    : null;
-
+const CurrentWeather = props => {
   return (
-    <ul className={`city-panel skyline-${cityName} ${props.weatherObj.color}`}>
+    <ul className={`city-panel skyline-${props.weatherObj.url} ${props.weatherObj.color}`}>
       <li>{props.weatherObj.name}</li>
       <li>
         <img
@@ -27,4 +20,4 @@ const mapStateToProps = state => {
   return { weatherObj: state.relevantWeatherObj };
 };
 
-export default connect(mapStateToProps)(currentWeather);
+export default connect(mapStateToProps)(CurrentWeather);

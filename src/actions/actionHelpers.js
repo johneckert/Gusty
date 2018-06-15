@@ -14,7 +14,8 @@ export const buildCurrentWeather = json => {
     description: json.weather[0].description || '--',
     temp: Math.round(json.main.temp) || '--',
     pressure: Math.round(json.main.pressure / 33.863886666667) || '--', //convert hpa => inhg
-    humidity: Math.round(json.main.humidity) || '--'
+    humidity: Math.round(json.main.humidity) || '--',
+    url: makeURL(json.name) || ''
   };
   return cityData;
 };
@@ -31,6 +32,14 @@ export const currentError = {
   temp: '--',
   pressure: '--',
   humidity: '--'
+};
+
+//format name string to URL friendly
+const makeURL = name => {
+  return name
+    .split(' ')
+    .join('-')
+    .toLowerCase();
 };
 
 //Assemble full forecastObj from individual forecastItems

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Details = props => {
-  const formated = string => {
+  const formatedDesc = string => {
     if (string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     } else {
@@ -16,7 +16,7 @@ const Details = props => {
       <ul>
         <li>
           <h5>DESCRIPTION</h5>
-          <h4>{formated(props.weatherObj.description)}</h4>
+          <h4>{formatedDesc(props.weatherObj.description)}</h4>
         </li>
         <li />
         <li>
