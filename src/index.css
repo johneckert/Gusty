@@ -186,6 +186,12 @@ li > img {
   padding-bottom: 0.625rem;
 }
 
+.error {
+  align-self: center;
+  padding: 0;
+  color: var(--text-grey);
+}
+
 hr {
   width: 90vw;
   height: 0.065rem;

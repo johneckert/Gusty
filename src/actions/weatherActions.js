@@ -2,7 +2,9 @@ import {
   GET_WEATHER_SUCCESS,
   GET_WEATHER_FAIL,
   GET_FORECAST_SUCCESS,
+  GET_FORECAST_FAIL,
   CURRENT_WEATHER_SUCCESS,
+  CURRENT_WEATHER_FAIL,
   SET_CURRENT_CITY
 } from './actionTypes';
 import WeatherData from '../services/weatherDataAPI';
@@ -15,7 +17,7 @@ export const getWeatherFor = cityName => {
         const cityData = buildCurrentWeather(json);
         dispatch({ type: GET_WEATHER_SUCCESS, payload: cityData });
       } else {
-        dispatch({ type: GET_WEATHER_FAIL });
+        dispatch({ type: GET_WEATHER_FAIL, payload: currentError });
       }
     });
   };
@@ -30,7 +32,7 @@ export const getSingleWeatherFor = cityName => {
         console.log(cityData);
         dispatch({ type: CURRENT_WEATHER_SUCCESS, payload: cityData });
       } else {
-        dispatch({ type: GET_WEATHER_FAIL });
+        dispatch({ type: CURRENT_WEATHER_FAIL, payload: currentError });
       }
     });
   };
@@ -44,9 +46,12 @@ export const getForecastFor = cityName => {
   console.log('hit action!');
   return function(dispatch) {
     ForecastData.getForecast(cityName).then(json => {
-      const forecastObj = buildForecastObj(json);
-      console.log('forecastObj in action', forecastObj);
-      dispatch({ type: GET_FORECAST_SUCCESS, payload: forecastObj });
+      if (json.cod === 200) {
+        const forecastObj = buildForecastObj(json);
+        dispatch({ type: GET_FORECAST_SUCCESS, payload: forecastObj });
+      } else {
+        dispatch({ type: GET_FORECAST_FAIL, payload: forecastError });
+      }
     });
   };
 };
@@ -57,18 +62,31 @@ export const getForecastFor = cityName => {
 
 const buildCurrentWeather = json => {
   const cityData = {
-    id: json.id,
-    name: json.name,
-    time: calcLocalTime(json.dt),
-    wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}`,
-    icon: parseIcon(json.weather[0].icon),
-    color: parseColor(json.weather[0].icon),
-    description: json.weather[0].description,
-    temp: Math.round(json.main.temp),
-    pressure: Math.round(json.main.pressure / 33.863886666667), //convert hpa => inhg
-    humidity: Math.round(json.main.humidity)
+    id: json.id || '--',
+    name: json.name || '--',
+    time: calcLocalTime(json.dt) || '--',
+    wind: `${direction(json.wind.deg)} ${Math.round(json.wind.speed)}` || '--',
+    icon: parseIcon(json.weather[0].icon) || '--',
+    color: parseColor(json.weather[0].icon) || '--',
+    description: json.weather[0].description || '--',
+    temp: Math.round(json.main.temp) || '--',
+    pressure: Math.round(json.main.pressure / 33.863886666667) || '--', //convert hpa => inhg
+    humidity: Math.round(json.main.humidity) || '--'
   };
   return cityData;
+};
+
+const currentError = {
+  id: 5,
+  name: 'Data Unavailable',
+  time: '--',
+  wind: '--',
+  icon: 'cloud',
+  color: 'moon',
+  description: '--',
+  temp: '--',
+  pressure: '--',
+  humidity: '--'
 };
 
 const parseColor = icon => {
@@ -146,6 +164,8 @@ const buildForecastObj = json => {
   });
   return forecastObj;
 };
+
+const forecastError = { error: true };
 
 //Build Obj for each data point in forecast
 const buildForecastItem = apiItem => {

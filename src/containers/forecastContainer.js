@@ -6,19 +6,23 @@ const ForecastContainer = props => {
   return (
     <div className="forecast-panel">
       <h2>5 Day Forecast</h2>
-      <ul>
-        {props.forecastObj ? (
-          Object.values(props.forecastObj).map(dayArr => {
-            return (
-              <li key={dayArr[0].day}>
-                <Day dayArr={dayArr} />
-              </li>
-            );
-          })
-        ) : (
-          <li>Data Unavailable</li>
-        )}
-      </ul>
+      {props.forecastObj.error ? (
+        <p className="error">Forecast Data Unavailable</p>
+      ) : (
+        <ul>
+          {props.forecastObj ? (
+            Object.values(props.forecastObj).map(dayArr => {
+              return (
+                <li key={dayArr[0].day}>
+                  <Day dayArr={dayArr} />
+                </li>
+              );
+            })
+          ) : (
+            <li>--</li>
+          )}
+        </ul>
+      )}
     </div>
   );
 };
