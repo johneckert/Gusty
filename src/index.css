@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Maitree|Montserrat:200,400,500,600');
 
-/* font-family: 'Montserrat', sans-serif;
-font-family: 'Maitree', serif; */
-
 :root {
   /* set color variables */
   --header: #f97963;
@@ -26,6 +23,12 @@ font-family: 'Maitree', serif; */
   font-size: calc(0.3em + 1vw);
   font-family: var(--main-font);
   font-weight: 500;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 *,
@@ -143,7 +146,7 @@ li > img {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
-  width: 98%;
+  width: 100%;
   padding: 3.34rem;
   color: var(--text-black);
   align-items: left;
@@ -155,10 +158,20 @@ li > img {
   left: 95vw;
   margin-top: 7rem;
 }
+
+.arrow-flipped {
+  transform: rotate(180deg);
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  margin-top: 7rem;
+}
 .forecast-panel > ul {
+  margin: 0 2vw 0 3vw;
+  width: 94%;
   display: flex;
   padding-bottom: 0.7rem;
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 
 .day {
