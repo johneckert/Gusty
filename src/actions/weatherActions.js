@@ -45,7 +45,7 @@ export const getForecastFor = cityName => {
   console.log('hit action!');
   return function(dispatch) {
     ForecastData.getForecast(cityName).then(json => {
-      if (json.cod == 200) {
+      if (json.cod === '200') {
         const forecastObj = buildForecastObj(json);
         console.log('no error', forecastObj);
         dispatch({ type: GET_FORECAST_SUCCESS, payload: forecastObj });

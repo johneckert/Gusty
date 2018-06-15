@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCurrentCity } from '../actions/weatherActions';
 
 class CityListItem extends Component {
   cityURL = this.props.weatherObj.name
@@ -32,13 +31,4 @@ const mapStateToProps = state => {
   return { currentCity: state.currentCity };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    // dispatchSetCurrentCity: currentCity => dispatch(setCurrentCity(currentCity))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CityListItem);
+export default connect(mapStateToProps)(CityListItem);

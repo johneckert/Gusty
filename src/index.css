@@ -140,6 +140,7 @@ li > img {
 
 .forecast-panel > ul {
   display: flex;
+  padding-bottom: 0.7rem;
   overflow-x: scroll;
 }
 
