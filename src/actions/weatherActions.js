@@ -30,7 +30,6 @@ export const getWeatherFor = cityName => {
 };
 
 export const getSingleWeatherFor = cityName => {
-  console.log('city name', cityName);
   return function(dispatch) {
     WeatherData.getWeather(cityName).then(json => {
       if (json.cod === 200) {
@@ -48,15 +47,12 @@ export const setCurrentCity = currentCity => {
 };
 
 export const getForecastFor = cityName => {
-  console.log('hit action!');
   return function(dispatch) {
     ForecastData.getForecast(cityName).then(json => {
       if (json.cod === '200') {
         const forecastObj = buildForecastObj(json);
-        console.log('no error', forecastObj);
         dispatch({ type: GET_FORECAST_SUCCESS, payload: forecastObj });
       } else {
-        console.log('error', forecastError);
         dispatch({ type: GET_FORECAST_FAIL, payload: forecastError });
       }
     });

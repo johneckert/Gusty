@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Day from '../components/day';
+import ScrollButton from '../components/scrollButton';
 
 class ForecastContainer extends Component {
   handleRightClick = () => {
-    this.refs.scroller.scrollLeft += 200;
+    this.refs.scroller ? (this.refs.scroller.scrollLeft += 200) : null;
   };
 
   handleLeftClick = () => {
-    this.refs.scroller.scrollLeft -= 200;
+    this.refs.scroller ? (this.refs.scroller.scrollLeft -= 200) : null;
   };
 
   renderError = () => <p className="error">Forecast Data Unavailable</p>;
@@ -16,30 +17,22 @@ class ForecastContainer extends Component {
   render() {
     return (
       <div className="forecast-panel">
-        <div className="arrow-flipped" onClick={this.handleLeftClick}>
-          <img src="./chevron-right.svg" alt=">" />
-        </div>
+        <ScrollButton direction="arrow-flipped" handleClick={this.handleLeftClick} />
         <h2>5 Day Forecast</h2>
         {this.props.forecastObj.error ? (
           this.renderError()
         ) : (
           <ul ref="scroller">
-            {this.props.forecastObj ? (
-              Object.values(this.props.forecastObj).map(dayArr => {
-                return (
-                  <li key={dayArr[0].day}>
-                    <Day dayArr={dayArr} />
-                  </li>
-                );
-              })
-            ) : (
-              <li>--</li>
-            )}
+            {Object.values(this.props.forecastObj).map(dayArr => {
+              return (
+                <li key={dayArr[0].day}>
+                  <Day dayArr={dayArr} />
+                </li>
+              );
+            })}
           </ul>
         )}
-        <div className="arrow" onClick={this.handleRightClick}>
-          <img src="./chevron-right.svg" alt=">" />
-        </div>
+        <ScrollButton direction="arrow" handleClick={this.handleRightClick} />
       </div>
     );
   }

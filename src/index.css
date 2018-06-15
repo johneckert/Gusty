@@ -153,7 +153,6 @@ li > img {
 }
 .arrow {
   width: 1rem;
-  height: 1rem;
   position: absolute;
   left: 95vw;
   margin-top: 7rem;
@@ -162,7 +161,6 @@ li > img {
 .arrow-flipped {
   transform: rotate(180deg);
   width: 1rem;
-  height: 1rem;
   position: absolute;
   margin-top: 7rem;
 }
@@ -219,7 +217,7 @@ li > img {
 
 .error {
   align-self: center;
-  padding: 0;
+  padding: 6vw 0;
   color: var(--text-grey);
 }
 
