@@ -1,8 +1,8 @@
 # GUSTY WEATHER APP
 
-url - link
+[itsgusty.herokuapp.com](https://itsgusty.herokuapp.com/)
 
-Gusty shows the weather in 5 different cities around the world. From the main page a user can get a quick overview of each city, or click on a city for more detailed information including a 5 day forecast.
+Gusty shows the weather in 5 different cities around the world. From the main page a user can get a quick overview of each city, or click on a specific city for more detailed information.
 
 Gusty was designed with scalability in mind. Adding more cities is as easy as adding their names to the initial state and creating skyline images for them.
 
@@ -25,16 +25,16 @@ Gusty was designed with scalability in mind. Adding more cities is as easy as ad
 
 ### City Page
 
-- The top panel functions similarly to the index.
+- The top panel functions similarly to the index page.
 
-- The middle panel renders the 5 day forecast in 3 hour with data received from the API. Clicking the arrow buttons allows the user to scroll through the forecast.
+- The middle panel renders the 5 day forecast in 3 hour increments with data received from the API. Clicking the arrow buttons allows the user to scroll through the forecast.
 
 - The bottom panel shows more in depth weather information calculated from data received by the API.
 
 ## Built With
 
 - React
-- React Router
+- React-Router
 - Redux
 
 ## Contributions
