@@ -1,4 +1,6 @@
-import { BASE_URL, APPID } from './URL';
+import BASE_URL from './URL';
+
+const APPID = process.env.APPID;
 
 class WeatherData {
   static getWeather(cityName) {
