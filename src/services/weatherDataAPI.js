@@ -1,4 +1,3 @@
-import APPID from './APIKey';
 import BASE_URL from './URL.js';
 
 class WeatherData {
