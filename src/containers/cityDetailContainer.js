@@ -7,7 +7,6 @@ import { setCurrentCity, getSingleWeatherFor, getForecastFor } from '../actions/
 
 class CityDetailContainer extends Component {
   componentDidMount() {
-    //is there a better way to get this?
     const currentCity = this.props.location.pathname
       .split('/')[1]
       .split('-')
