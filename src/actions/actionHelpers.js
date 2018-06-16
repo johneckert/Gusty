@@ -91,19 +91,22 @@ const calcLocalTime = dt => {
 //calculate day name from dateTime
 const getDayString = item => {
   const week = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-  const date = new Date(item.dt_txt);
+  const cleanDT = dateTimeCleaner(item.dt_txt);
+  const date = new Date(cleanDT);
   return week[date.getDay()];
 };
 
 //gets day number
 const getDayNum = item => {
-  const date = new Date(item.dt_txt);
+  const cleanDT = dateTimeCleaner(item.dt_txt);
+  const date = new Date(cleanDT);
   return date.getDate();
 };
 
 //calculate Hour from dateTime
 const getHour = datetime => {
-  const date = new Date(datetime);
+  const cleanDT = dateTimeCleaner(datetime);
+  const date = new Date(cleanDT);
   const hour = date.getHours();
   if (hour > 12) {
     return `${hour - 12} PM`;
@@ -114,6 +117,10 @@ const getHour = datetime => {
   } else {
     return `${hour} AM`;
   }
+};
+//format dateTime so it also works in safari
+const dateTimeCleaner = dtString => {
+  return dtString.split(' ').join('T');
 };
 
 //Calculate Wind Direction from degrees
