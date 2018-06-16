@@ -193,6 +193,8 @@ li > img {
   font-size: 0.875rem;
 }
 
+/* styling for detail panel */
+
 .details-panel {
   background-color: var(--details);
   display: flex;
@@ -227,6 +229,8 @@ hr {
   color: rgba(151, 151, 151, 0.22);
   border: solid 0.032rem rgba(151, 151, 151, 0.22);
 }
+
+/* color and skyline classes */
 
 .sun {
   background-color: var(--day-clear);

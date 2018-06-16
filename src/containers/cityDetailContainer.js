@@ -26,10 +26,6 @@ class CityDetailContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { currentCity: state.currentCity };
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     dispatchSetCurrentCity: cityName => dispatch(setCurrentCity(cityName)),
@@ -39,6 +35,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(CityDetailContainer);
