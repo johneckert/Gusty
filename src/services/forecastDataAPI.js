@@ -1,5 +1,4 @@
-import APPID from './URL';
-import BASE_URL from './URL';
+import { BASE_URL, APPID } from './URL';
 
 class ForecastData {
   static getForecast(cityName) {
