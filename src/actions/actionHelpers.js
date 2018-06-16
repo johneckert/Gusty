@@ -64,7 +64,7 @@ export const forecastError = { error: true };
 //Assemble forcastItem (individual 3hr data point) from json
 const buildForecastItem = apiItem => {
   const forecastItem = {};
-  forecastItem.hour = getHour(apiItem.dt_txt);
+  forecastItem.hour = getHour(apiItem.dt);
   forecastItem.day = getDayString(apiItem);
   forecastItem.icon = parseIcon(apiItem.weather[0].icon);
   forecastItem.description = apiItem.weather[0].description;
